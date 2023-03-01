@@ -21,9 +21,20 @@ var config = {
   },
   output: {
     // /src/page/login/index.js -> js/login.js 
-    path: path.resolve(__dirname, 'dist'),
+    // publicPath  : '/dist/',
+    path: path.resolve(__dirname, 'public'),
     filename: 'js/[name].js'
   },
+  devServer: {
+    port: 8088,
+    proxy: {
+      '**/*.do': {
+        target: 'http://localhost:8081',
+        changeOrigin: true
+      }
+    }
+  },
+
   plugins: [
     // css单独打包
     new MinCssExtractPlugin(
@@ -44,14 +55,15 @@ var config = {
       { test: /\.(gif|png|jpg|jpeg|woff|svg|eotttf)\??.*$/, use: { loader: 'url-loader', options: { limit: 10, name: '[name].[ext]', outputPath: 'resource/', publicPath: '../resource/' } } },]
   },
 
-  resolve :{
-    alias : {
-        util    : __dirname + '/src/util',
-        page    : __dirname + '/src/page',
-        service : __dirname + '/src/service',
-        image   : __dirname + '/src/images',
+  resolve: {
+    alias: {
+      util    : __dirname + '/src/util',
+      page    : __dirname + '/src/page',
+      service : __dirname + '/src/service',
+      image   : __dirname + '/src/images',
     }
-},
+  },
+  mode: 'development'
 };
 
 module.exports = config;
