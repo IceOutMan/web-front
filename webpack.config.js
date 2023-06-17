@@ -19,10 +19,10 @@ var getHtmlConfig = function (name, title) {
 var config = {
     // js 打包
     entry: {
-        'common' :   [__dirname + '/src/page/common/index.js'],
-        'login'  :   [__dirname + '/src/page/login/index.js'],
-        'index'  :   [__dirname + '/src/page/index/index.js'],
-        'result' :   [__dirname + '/src/page/result/index.js'],
+        'common'        :   [__dirname + '/src/page/common/index.js'],
+        'user-login'    :   [__dirname + '/src/page/user-login/index.js'],
+        'index'         :   [__dirname + '/src/page/index/index.js'],
+        'result'        :   [__dirname + '/src/page/result/index.js'],
     },
     output: {
         // /src/page/login/index.js -> js/login.js
@@ -47,7 +47,7 @@ var config = {
             {filename: 'css/[name].css',}
         ),
         // 打包 HTML
-        new HtmlWebpackPlugin(getHtmlConfig('login', '用户登录')),
+        new HtmlWebpackPlugin(getHtmlConfig('user-login', '用户登录')),
         new HtmlWebpackPlugin(getHtmlConfig('index', '首页')),
         new HtmlWebpackPlugin(getHtmlConfig('result','操作结果')),
 

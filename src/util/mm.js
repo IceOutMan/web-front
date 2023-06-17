@@ -60,7 +60,7 @@ var _mm = {
         // alert(msg || '哪里不对了~');
     },
     // 字段的验证，支持非空、手机、邮箱的判断
-    validate: function (value, type) {
+    validata: function (value, type) {
         var value = $.trim(value);
         // 非空验证
         if ('require' === type) {
